@@ -25,8 +25,7 @@ class TestHeaderPage:
 
         header_page = HeaderPage(driver)
         header_page.click_on_order_list()
-        feed_page = FeedPage(driver)
-        feed_page.wait_until_element_visibility(5, FeedPageLocators.ORDERS_LIST_TITLE)
+
         header_page.click_on_constructor()
         main_page = MainPage(driver)
 
@@ -37,7 +36,7 @@ class TestHeaderPage:
     def test_redirect_by_account_button(self, driver, login):
 
         main_page = MainPage(driver)
-        main_page.find_the_element(10, MainPageLocators.INGREDIENT_BUN)
+
         header_page = HeaderPage(driver)
         header_page.click_on_account()
         profile_page = ProfilePage(driver)

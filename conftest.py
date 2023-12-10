@@ -1,22 +1,22 @@
+import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
-import pytest
-from helpers import user
+from data import Url
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 
 
 @pytest.fixture(scope='function', params=['chrome', 'firefox'])
 def driver(request):
-    driver = None
+    driver = webdriver
     if request.param == 'chrome':
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-    elif request.param == 'firefox':
+    if request.param == 'firefox':
         driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-    driver.get("https://stellarburgers.nomoreparties.site/")
+    driver.get(Url.URL)
     yield driver
     driver.quit()
 
@@ -25,11 +25,6 @@ def driver(request):
 def make_order(driver):
     main_page = MainPage(driver)
     main_page.make_order()
-
-
-@pytest.fixture(scope='session')
-def user_data():
-    return user()
 
 
 @pytest.fixture(scope='function')

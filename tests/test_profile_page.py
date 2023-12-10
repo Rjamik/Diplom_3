@@ -14,11 +14,10 @@ class TestProfilePage:
     def test_logout(self, driver, login):
 
         main_page = MainPage(driver)
-        main_page.find_the_element(10, MainPageLocators.INGREDIENT_BUN)
+
         header_page = HeaderPage(driver)
         header_page.click_on_account()
         profile_page = ProfilePage(driver)
-        profile_page.wait_until_element_visibility(5, ProfilePageLocators.PROFILE_LINK)
         profile_page.click_on_logout_button()
         login_page = LoginPage(driver)
 
@@ -31,7 +30,6 @@ class TestProfilePage:
         header_page = HeaderPage(driver)
         header_page.click_on_account()
         profile_page = ProfilePage(driver)
-        profile_page.wait_until_element_visibility(5, ProfilePageLocators.PROFILE_LINK)
         profile_page.click_on_order_history_link()
 
         assert profile_page.find_the_element(5, ProfilePageLocators.ORDER_STATUS).is_displayed(), \

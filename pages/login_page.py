@@ -1,5 +1,4 @@
 import allure
-from locators.base_page_locators import BasePageLocators
 from locators.login_page_locators import LoginPageLocators
 from pages.base_page import BasePage
 
@@ -8,11 +7,11 @@ class LoginPage(BasePage):
 
     @allure.step('Заполняем почту в инпуте "Email"')
     def fill_email(self, email):
-        self.send_keys_to_element(BasePageLocators.INPUT_EMAIL, email)
+        self.send_keys_to_element(LoginPageLocators.INPUT_EMAIL, email)
 
     @allure.step('Заполняем пароль в инпуте "Пароль"')
     def fill_password(self, password):
-        self.send_keys_to_element(BasePageLocators.INPUT_PASSWORD, password)
+        self.send_keys_to_element(LoginPageLocators.INPUT_PASSWORD, password)
 
     @allure.step('Выполняем логин кликом на кнопку "Войти"')
     def click_on_enter_button(self):

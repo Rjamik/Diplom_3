@@ -1,4 +1,3 @@
-import requests
 import random
 import string
 
@@ -23,12 +22,4 @@ def generate_username(length=5):
     return name
 
 
-def user():
-    payload = {
-        'email': generate_login(),
-        'password': generate_password(length=6),
-        'name': generate_username(length=5)
-    }
-    response = requests.post('https://stellarburgers.nomoreparties.site/api/auth/register', data=payload)
-    assert response.status_code == 200
-    return payload
+

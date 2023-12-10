@@ -1,5 +1,4 @@
 import allure
-from locators.base_page_locators import BasePageLocators
 from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
 
@@ -16,7 +15,7 @@ class MainPage(BasePage):
 
     @allure.step('Закрываем всплывающее окно с деталями ингредиента кликом на крестик')
     def click_on_close_button(self):
-        self.move_to_element_and_click(BasePageLocators.CLOSE_BUTTON)
+        self.move_to_element_and_click(MainPageLocators.CLOSE_BUTTON)
 
     @allure.step('Подтверждаем создание заказа кликом на кнопку "Оформить заказ"')
     def click_on_order_button(self):
@@ -48,5 +47,5 @@ class MainPage(BasePage):
         self.wait_until_element_visibility(10, MainPageLocators.ORDER_STATUS_TEXT)
         self.wait_until_element_invisibility(10, MainPageLocators.DEFAULT_ORDER_NUMBER)
         order = self.get_text_from_element(MainPageLocators.ORDER_NUMBER)
-        self.move_to_element_and_click(BasePageLocators.CLOSE_BUTTON)
+        self.move_to_element_and_click(MainPageLocators.CLOSE_BUTTON)
         return order

@@ -19,7 +19,7 @@ class TestMainPage:
 
         main_page = MainPage(driver)
         main_page.click_on_ingredient()
-        main_page.wait_until_element_visibility(5, MainPageLocators.INGREDIENT_DETAILS_TITLE)
+
         main_page.click_on_close_button()
 
         assert main_page.wait_until_element_invisibility(5, MainPageLocators.INGREDIENT_DETAILS_MODAL), \
@@ -40,13 +40,12 @@ class TestMainPage:
     def test_successful_order(self, driver, login):
 
         main_page = MainPage(driver)
-        main_page.find_the_element(10, MainPageLocators.INGREDIENT_BUN)
+
         main_page.move_bun_to_basket()
         main_page.move_filling_to_basket()
         main_page.move_sauce_to_basket()
-        main_page.find_the_element(10, MainPageLocators.ORDER_BUTTON)
+
         main_page.click_on_order_button()
-        main_page.wait_until_element_visibility(10, MainPageLocators.ORDER_NUMBER)
 
         assert main_page.find_the_element(5, MainPageLocators.ORDER_STATUS_TEXT).is_displayed(), \
             'Создание заказа завершилось ошибкой'

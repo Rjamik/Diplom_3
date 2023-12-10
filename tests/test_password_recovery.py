@@ -1,6 +1,5 @@
 import allure
 from data import UserData
-from locators.base_page_locators import BasePageLocators
 from locators.password_recovery_page_locators import PasswordRecoveryPageLocators
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
@@ -45,8 +44,7 @@ class TestPasswordRecovery:
         password_recovery_page = PasswordRecoveryPage(driver)
         password_recovery_page.fill_email(UserData.LOGIN)
         password_recovery_page.click_on_password_recovery_button()
-        password_recovery_page.wait_until_element_visibility(10, PasswordRecoveryPageLocators.SAVE_BUTTON)
         password_recovery_page.click_on_show_password_icon()
 
-        assert password_recovery_page.find_the_element(5, BasePageLocators.INPUT_PASSWORD_ACTIVE).is_displayed(), \
+        assert password_recovery_page.find_the_element(5, PasswordRecoveryPageLocators.INPUT_PASSWORD_ACTIVE).is_displayed(), \
             'При клике на кнопку показа/скрытия пароля поле "Пароль" не стало активным'
